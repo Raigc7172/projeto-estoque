@@ -17,7 +17,7 @@ void cadastrar_produto(Produto *pro, int posicao, int id)
     pro[posicao].id = id;
 
     printf("Nome do produto: ");
-    scanf(" %49[^\n]", &pro[posicao].nome);
+    scanf(" %49[^\n]", pro[posicao].nome);
 
     printf("Preco do produto: ");
     scanf(" %f", &pro[posicao].preco);
