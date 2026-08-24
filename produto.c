@@ -12,27 +12,29 @@ Produto *aumentar_vetor(Produto *pro, int quantidade)
     return realloc(pro, (quantidade+1) * sizeof(Produto));
 }
 
-void cadastrar_produto(Produto *pro, int posicao, int id)
+void cadastrar_produto(Produto *pro, int total, int id)
 {
-    pro[posicao].id = id;
-    
+    pro[total].id = id;
+
     printf("Nome do produto: ");
-    scanf(" %49[^\n]", pro[posicao].nome);
+    scanf(" %49[^\n]", pro[total].nome);
 
     printf("Preco do produto: ");
-    scanf(" %f", &pro[posicao].preco);
+    scanf(" %f", &pro[total].preco);
 
     printf("Quantidade do produto: ");
-    scanf(" %d", &pro[posicao].quantidade);
-    printf("\n");
+    scanf(" %d", &pro[total].quantidade);
 }
 
 int buscar_produto( Produto *pro, int id, int total)
 {
+    if (total <= 0) {
+        return -1;
+    }
     int i=total-1;
     if(pro[i].id == id){
-        return i;
-    }
+    return i;
+   }
     return buscar_produto(pro, id, total-1);
 }
 
@@ -55,26 +57,23 @@ void ordenar_por_preco(Produto *pro, int total){
 
 float valor_total_estoque(Produto *pro, int total)
 {
-    float total_estoque = 0;
+    float soma_estoque = 0;
 
     for (int i = 0; i < total; i++) {
-        total_estoque= total_estoque + (pro[i].preco * pro[i].quantidade);
+
+        soma_estoque= soma_estoque + (pro[i].preco * pro[i].quantidade);
     }
 
-    return total_estoque;
+    return soma_estoque;
 }
 void listar_produtos(Produto *pro, int total, int posicao)
 {
-    if (posicao >= total){
+    if (posicao >= total)
         return;
-    }
-        
-        printf("ID: %d\n", pro[posicao].id);
-        printf("Nome: %s\n", pro[posicao].nome);
-        printf("Preco: %.2f\n", pro[posicao].preco);
-        printf("Quantidade: %d\n", pro[posicao].quantidade);
-        printf("\n\n");
 
-        listar_produtos(pro, total, posicao + 1);
-       
+    printf("ID: %d\n", pro[posicao].id);
+    printf("Nome: %s\n", pro[posicao].nome);
+    printf("Preco: %.2f\n\n", pro[posicao].preco);
+
+    listar_produtos(pro, total, posicao + 1);
 }

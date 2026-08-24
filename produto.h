@@ -12,7 +12,7 @@ Produto *criar_vetor(int capacidade);
 
 Produto *aumentar_vetor(Produto *pro, int quantidade);
 
-void cadastrar_produto(Produto *pro, int posicao, int id);
+void cadastrar_produto(Produto *pro, int total, int id);
 
 void listar_produtos(Produto *pro, int total, int posicao);
 

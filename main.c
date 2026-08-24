@@ -55,7 +55,7 @@ int main()
                 printf("id invalido\n");
             } else{
                 int encontrar = buscar_produto(pro, id, total);
-                if(encontrar= -1){
+                if(encontrar == -1){
                     printf("id invalido");
                 } else {
                 printf("Nome: %s\n", pro[encontrar].nome);
